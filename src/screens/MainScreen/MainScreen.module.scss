@@ -1,0 +1,27 @@
+@import "../../css/colors";
+
+.mainScreenWrap {
+  background: $Smoke;
+  color: $TextGray;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.contentBlock {
+  width: 100%;
+  height: 100%;
+  @media (min-width: 576px) {
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    padding: 0 1rem;
+    width: 100%;
+  }
+  @media (min-width: 992px) {
+    width: 900px;
+  }
+  @media (min-width: 1200px) {
+    width: 1000px;
+  }
+}

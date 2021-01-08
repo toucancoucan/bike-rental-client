@@ -1,0 +1,17 @@
+@import "../../../css/colors";
+
+.paddingBlock{
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  border-radius: .15rem;
+  border: 1px solid $BorderGray;
+  background: $White;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.darkBackground{
+  background: $BackgroundGray;
+}
+

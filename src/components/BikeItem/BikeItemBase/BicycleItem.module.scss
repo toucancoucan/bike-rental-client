@@ -1,0 +1,12 @@
+@import "../../../css/colors";
+
+.bicycleFlexWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonsContainer {
+  > * {
+    margin-left: .5rem;
+  }
+}
