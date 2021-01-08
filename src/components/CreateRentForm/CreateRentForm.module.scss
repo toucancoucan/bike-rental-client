@@ -1,7 +1,7 @@
 @import "../../css/colors";
 
 
-.formFlex{
+.formFlex {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -9,27 +9,32 @@
   align-items: center;
 }
 
-.input{
+.input {
   border: 1px solid $BorderGray;
   border-radius: .15rem;
   padding: .5rem;
   width: 100%;
 }
 
-.labelText{
+.select{
+  @extend .input;
+  cursor:pointer;
+}
+
+.labelText {
   font-size: .9rem;
   position: absolute;
   top: -1.125rem
 }
 
-.label{
+.label {
   flex: 1;
   position: relative;
   margin: 1rem 1rem .5rem 1rem;
 }
 
-.buttonLabel{
+
+.buttonLabel {
   position: relative;
   margin: 1rem 1rem .5rem 1rem;
-
 }

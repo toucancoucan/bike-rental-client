@@ -10,7 +10,7 @@ type propsType = {
 }
 
 const Button: React.FC<propsType> = (props) => {
-       return (
+    return (
         <button className={classnames(styles.button, getButtonStyle(props.color))} onClick={() => props.onClick()}>
             {props.text}
         </button>

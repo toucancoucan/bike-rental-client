@@ -18,7 +18,7 @@ const BikeItemBase: React.FC<propsType> = (props) => {
     return (
         <PaddingBlock>
             <div className={styles.bicycleFlexWrap}>
-                <div>
+                <div className={styles.textContainer}>
                     {`${props.name} / ${props.type} / ${beautifyPrice(props.price)}`}
                 </div>
                 <div className={styles.buttonsContainer}>

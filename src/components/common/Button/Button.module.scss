@@ -1,6 +1,6 @@
 @import "../../../css/colors";
 
-.button{
+.button {
   cursor: pointer;
   border: none;
   color: $White;
@@ -8,19 +8,20 @@
   padding: .5rem;
   width: 8rem;
   border-radius: .15rem;
-  &:hover{
+
+  &:hover {
     filter: brightness(110%);
   }
 }
 
-.primary{
+.primary {
   background: $Primary;
 }
 
-.danger{
+.danger {
   background: $Danger;
 }
 
-.success{
+.success {
   background: $Success;
 }

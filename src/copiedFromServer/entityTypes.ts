@@ -1,4 +1,4 @@
-export type bike_type = {
+export type bikeType = {
     bike_type_id: number
     type: string
 }
