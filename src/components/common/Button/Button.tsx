@@ -6,12 +6,12 @@ type colors = 'danger' | 'primary' | 'success'
 type propsType = {
     text: string
     color: colors
-    onClick: () => void
+    onClick?: () => void
 }
 
 const Button: React.FC<propsType> = (props) => {
     return (
-        <button className={classnames(styles.button, getButtonStyle(props.color))} onClick={() => props.onClick()}>
+        <button className={classnames(styles.button, getButtonStyle(props.color))} onClick={() => props.onClick?.()}>
             {props.text}
         </button>
     )

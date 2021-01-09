@@ -3,7 +3,7 @@ import Header from "../common/Header/Header";
 import beautifyPrice from "../../functions/beautifyPrice";
 import {connect} from "react-redux";
 import {rootState} from "../../reducers/store";
-import {rentedBike} from "../../copiedFromServer/entityTypes";
+import {rentedBike} from "../../types/entityTypes";
 import {cancelRentAndRefetchRentedAndAvailable, fetchAndSetRentedBikes} from "../../reducers/RentedBikesReducer";
 import RentedBike from "../BikeItem/RentedBike";
 
@@ -24,8 +24,10 @@ const _RentedBikes: React.FC<propsType> = (props) => {
             props.fetchAndSetRentedBikes();
         }
     }, [props])
+
     let totalPrice = 0;
     props.rentedBikes.forEach(e => totalPrice += e.price)
+
     return (
         <>
             <Header text={`🤟 Your rent (Total: ${beautifyPrice(totalPrice)})`}/>

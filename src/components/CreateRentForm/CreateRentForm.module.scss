@@ -16,13 +16,13 @@
   width: 100%;
 }
 
-.errorBorder{
+.errorBorder {
   border: 1px solid $Danger;
 }
 
-.select{
+.select {
   @extend .input;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .labelText {
@@ -31,7 +31,7 @@
   top: -1.125rem
 }
 
-.errorText{
+.errorText {
   color: $Danger;
   font-size: .9rem;
   position: absolute;

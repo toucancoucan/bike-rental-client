@@ -1,8 +1,9 @@
-import {bikeForAdd, bikeForRent} from "../copiedFromServer/entityTypes";
+import {bikeForAdd, bikeForRent} from "../types/entityTypes";
 import {ThunkAction} from "redux-thunk";
 import {rootState} from "./store";
 import {apiRoutes} from "../constants/apiRoutes";
 import {fetchAndSetRentedBikes} from "./RentedBikesReducer";
+import {headers} from "../constants/headers";
 
 
 const SET_BIKES_FOR_RENT = 'SET_BIKES_FOR_RENT';
@@ -36,9 +37,7 @@ export const uploadNewBikeAndRefetchBikesForRent = (item: bikeForAdd): ThunkActi
     return async (dispatch) => {
         let response = await fetch(apiRoutes.addBike, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
+            headers,
             body: JSON.stringify(item)
         })
         if (response.ok) {
@@ -53,9 +52,7 @@ export const deleteBikeAndRefetchBikesForRent = (id: number): ThunkAction<Promis
     return async (dispatch) => {
         let response = await fetch(apiRoutes.deleteBike, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
+            headers,
             body: JSON.stringify({id})
         })
         if (response.ok) {
@@ -71,9 +68,7 @@ export const rentBikeAndRefetchRentedAndAvailable = (id: number): ThunkAction<Pr
     return async (dispatch) => {
         let response = await fetch(apiRoutes.addRent, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
+            headers,
             body: JSON.stringify({id})
         })
         if (response.ok) {
@@ -84,8 +79,6 @@ export const rentBikeAndRefetchRentedAndAvailable = (id: number): ThunkAction<Pr
         }
     }
 }
-
-
 
 
 export type AvailableBikesReducerType = {

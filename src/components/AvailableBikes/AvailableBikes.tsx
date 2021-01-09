@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import Header from "../common/Header/Header";
 import {connect} from "react-redux";
 import {rootState} from "../../reducers/store";
-import {bikeForRent} from "../../copiedFromServer/entityTypes";
+import {bikeForRent} from "../../types/entityTypes";
 import {
     deleteBikeAndRefetchBikesForRent,
     fetchAndSetBikesForRent,
@@ -23,11 +23,13 @@ type mapDispatchToProps = {
 type propsType = mapStateToProps & mapDispatchToProps;
 
 const _AvailableBikes: React.FC<propsType> = (props) => {
+
     useEffect(() => {
         if (props.availableBikes.length === 0) {
             props.fetchAndSetBikesForRent();
         }
     }, [props])
+
     return (
         <>
             <Header text={`🚲 Available bicycles (${props.availableBikes.length})`}/>

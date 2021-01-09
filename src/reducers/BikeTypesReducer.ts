@@ -1,4 +1,4 @@
-import {bikeType} from "../copiedFromServer/entityTypes";
+import {bikeType} from "../types/entityTypes";
 import {ThunkAction} from "redux-thunk";
 import {rootState} from "./store";
 import {apiRoutes} from "../constants/apiRoutes";
