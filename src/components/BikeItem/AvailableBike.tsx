@@ -10,8 +10,8 @@ type propsType = {
 const AvailableBike: React.FC<propsType> = (props) => {
     return (
         <BikeItemBase name={props.name} type={props.type} price={props.price} buttons={[
-            <Button text={'Rent'} color={"primary"} onClick={props.rentBike}/>,
-            <Button text={'Delete'} color={"danger"} onClick={props.deleteBike}/>
+            <Button text={'Rent'} color={"primary"} onClick={props.rentBike} key={1}/>,
+            <Button text={'Delete'} color={"danger"} onClick={props.deleteBike} key={2}/>
         ]}/>
     )
 }

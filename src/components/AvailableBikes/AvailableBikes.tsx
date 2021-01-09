@@ -3,7 +3,11 @@ import Header from "../common/Header/Header";
 import {connect} from "react-redux";
 import {rootState} from "../../reducers/store";
 import {bikeForRent} from "../../copiedFromServer/entityTypes";
-import {fetchAndSetBikesForRent} from "../../reducers/AvailableBikesReducer";
+import {
+    deleteBikeAndRefetchBikesForRent,
+    fetchAndSetBikesForRent,
+    rentBikeAndRefetchRentedAndAvailable
+} from "../../reducers/AvailableBikesReducer";
 import AvailableBike from "../BikeItem/AvailableBike";
 
 type mapStateToProps = {
@@ -12,6 +16,8 @@ type mapStateToProps = {
 
 type mapDispatchToProps = {
     fetchAndSetBikesForRent: () => void
+    deleteBikeAndRefetchBikesForRent: (id: number) => void
+    rentBikeAndRefetchRentedAndAvailable: (id: number) => void
 }
 
 type propsType = mapStateToProps & mapDispatchToProps;
@@ -25,10 +31,10 @@ const _AvailableBikes: React.FC<propsType> = (props) => {
     return (
         <>
             <Header text={`🚲 Available bicycles (${props.availableBikes.length})`}/>
-            {props.availableBikes.map(e => <AvailableBike deleteBike={() => {
-            }} rentBike={() => {
-            }} name={e.name} type={e.type} price={e.price}/>)}
-
+            {props.availableBikes.map((e, i) => <AvailableBike
+                deleteBike={() => props.deleteBikeAndRefetchBikesForRent(e.bike_id)}
+                rentBike={() => props.rentBikeAndRefetchRentedAndAvailable(e.bike_id)}
+                key={i} name={e.name} type={e.type} price={e.price}/>)}
         </>
     )
 }
@@ -41,6 +47,9 @@ const mapStateToProps = (state: rootState): mapStateToProps => {
 
 
 const AvailableBikes = connect<mapStateToProps, mapDispatchToProps, any, any>(mapStateToProps,
-    {fetchAndSetBikesForRent})(_AvailableBikes)
+    {
+        fetchAndSetBikesForRent, deleteBikeAndRefetchBikesForRent,
+        rentBikeAndRefetchRentedAndAvailable
+    })(_AvailableBikes)
 
 export default AvailableBikes;

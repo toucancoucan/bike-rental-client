@@ -4,7 +4,7 @@ import beautifyPrice from "../../functions/beautifyPrice";
 import {connect} from "react-redux";
 import {rootState} from "../../reducers/store";
 import {rentedBike} from "../../copiedFromServer/entityTypes";
-import {fetchAndSetRentedBikes} from "../../reducers/RentedBikesReducer";
+import {cancelRentAndRefetchRentedAndAvailable, fetchAndSetRentedBikes} from "../../reducers/RentedBikesReducer";
 import RentedBike from "../BikeItem/RentedBike";
 
 type mapStateToProps = {
@@ -13,6 +13,7 @@ type mapStateToProps = {
 
 type mapDispatchToProps = {
     fetchAndSetRentedBikes: () => void
+    cancelRentAndRefetchRentedAndAvailable: (id: number) => void
 }
 
 type propsType = mapStateToProps & mapDispatchToProps;
@@ -24,11 +25,13 @@ const _RentedBikes: React.FC<propsType> = (props) => {
         }
     }, [props])
     let totalPrice = 0;
-    props.rentedBikes.forEach(e=>totalPrice+=e.price)
+    props.rentedBikes.forEach(e => totalPrice += e.price)
     return (
         <>
             <Header text={`🤟 Your rent (Total: ${beautifyPrice(totalPrice)})`}/>
-            {props.rentedBikes.map(e=><RentedBike cancelRent={()=>{}} name={e.name} type={e.type} price={e.price}/>)}
+            {props.rentedBikes.map((e, i) =>
+                <RentedBike key={i} cancelRent={() => props.cancelRentAndRefetchRentedAndAvailable(e.rent_id)}
+                            name={e.name} type={e.type} price={e.price}/>)}
         </>
     )
 }
@@ -41,6 +44,6 @@ const mapStateToProps = (state: rootState): mapStateToProps => {
 
 
 const RentedBikes = connect<mapStateToProps, mapDispatchToProps, any, any>(mapStateToProps,
-    {fetchAndSetRentedBikes})(_RentedBikes)
+    {fetchAndSetRentedBikes, cancelRentAndRefetchRentedAndAvailable})(_RentedBikes)
 
 export default RentedBikes;

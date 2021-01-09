@@ -2,6 +2,7 @@ import {rentedBike} from "../copiedFromServer/entityTypes";
 import {ThunkAction} from "redux-thunk";
 import {rootState} from "./store";
 import {apiRoutes} from "../constants/apiRoutes";
+import {fetchAndSetBikesForRent} from "./AvailableBikesReducer";
 
 
 const SET_RENTED_BIKES = 'SET_RENTED_BIKES';
@@ -25,6 +26,24 @@ export const fetchAndSetRentedBikes = (): ThunkAction<Promise<void>, rootState, 
         if (response.ok) {
             let data = await response.json();
             dispatch(setRentedBikes(data))
+        } else {
+            console.log("Error" + response.status);
+        }
+    }
+}
+
+export const cancelRentAndRefetchRentedAndAvailable = (id: number): ThunkAction<Promise<void>, rootState, any, any> => {
+    return async (dispatch) => {
+        let response = await fetch(apiRoutes.deleteRent, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({id})
+        })
+        if (response.ok) {
+            await dispatch(fetchAndSetBikesForRent())
+            await dispatch(fetchAndSetRentedBikes())
         } else {
             console.log("Error" + response.status);
         }
