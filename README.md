@@ -1,1 +1,1 @@
-Start client app using "npm start command"
+Start client app using "npm start" command.
