@@ -25,7 +25,7 @@ type propsType = mapStateToProps & mapDispatchToProps;
 const _AvailableBikes: React.FC<propsType> = (props) => {
 
     useEffect(() => {
-        if (props.availableBikes.length === 0) {
+        if (!props.availableBikes.length) {
             props.fetchAndSetBikesForRent();
         }
     }, [props])

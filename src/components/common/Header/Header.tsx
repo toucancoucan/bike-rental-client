@@ -9,7 +9,7 @@ type propsType = {
 
 const Header: React.FC<propsType> = (props) => {
     return (
-        <div className={classNames(styles.header, props.large ? styles.large : '')}>
+        <div className={classNames(styles.header, props.large && styles.large)}>
             {props.text}
         </div>
     )

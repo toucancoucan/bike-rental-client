@@ -37,7 +37,7 @@ const FormLabel: React.FC<{ title: string }> = (props) => <label className={styl
 const _CreateRentForm: React.FC<propsType> = (props) => {
 
     useEffect(() => {
-        if (props.bikeTypes.length === 0) {
+        if (!props.bikeTypes.length) {
             props.fetchAndSetBikeTypes();
         }
     }, [props])
@@ -54,7 +54,7 @@ const _CreateRentForm: React.FC<propsType> = (props) => {
                     <FormLabel title={'Bike name'}>
                         <input name={'name'} ref={register({required: true})} placeholder={'Example: Flash 77 '}
                                type="text"
-                               className={classNames(styles.input, errors.name ? styles.errorBorder : '')}/>
+                               className={classNames(styles.input, errors.name && styles.errorBorder)}/>
                         {errors.name && <ErrorText text={'Please enter bike name'}/>}
                     </FormLabel>
 
@@ -73,7 +73,7 @@ const _CreateRentForm: React.FC<propsType> = (props) => {
                                placeholder={'Example: 10.25'}
                                type='number'
                                step="0.01"
-                               className={classNames(styles.input, errors.price ? styles.errorBorder : '')}/>
+                               className={classNames(styles.input, errors.price && styles.errorBorder)}/>
                         {errors.price && <ErrorText text={'Please enter bike price'}/>}
                     </FormLabel>
 

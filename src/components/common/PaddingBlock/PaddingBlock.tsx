@@ -8,7 +8,7 @@ type propsType = {
 
 const PaddingBlock: React.FC<propsType> = (props) => {
     return (
-        <div className={classNames(styles.paddingBlock, props.darkBackground ? styles.darkBackground : '')}>
+        <div className={classNames(styles.paddingBlock, props.darkBackground && styles.darkBackground)}>
             {props.children}
         </div>
     )
